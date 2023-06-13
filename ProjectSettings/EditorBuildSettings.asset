@@ -9,4 +9,6 @@ EditorBuildSettings:
     path: Assets/Scenes/LivingRoom.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
   m_configObjects:
+    Unity.XR.OpenVR.Settings: {fileID: 11400000, guid: 40faf49fc96339c45b5ce2baa44046d8, type: 2}
     com.unity.xr.management.loader_settings: {fileID: 11400000, guid: 218d3a378d23b784796c3304b3c0f89e, type: 2}
+    xr.sdk.mock-hmd.settings: {fileID: 11400000, guid: 83b2c1840b9741f4faba8bbf2f722a57, type: 2}
