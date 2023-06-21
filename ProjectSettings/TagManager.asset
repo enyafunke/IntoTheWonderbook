@@ -8,11 +8,15 @@ TagManager:
   - FxTemporaire
   - Target
   - Door
+  - Book
+  - Key
+  - Drink
+  - Eat
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Collectibles
   - Water
   - UI
   - 
