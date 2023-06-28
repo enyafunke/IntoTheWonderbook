@@ -9,7 +9,7 @@ public class MoveCameraRig : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Vector3 vec = new Vector3(camera.transform.position.x - transform.position.x, 0, camera.transform.position.z - transform.position.z);
-        transform.position = vec;
+       // Vector3 vec = new Vector3(camera.transform.position.x - transform.position.x, 0, camera.transform.position.z - transform.position.z);
+       // transform.position = vec;
     }
 }

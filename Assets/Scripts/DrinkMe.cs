@@ -4,28 +4,135 @@ using UnityEngine;
 
 public class DrinkMe : MonoBehaviour
 {
-    [SerializeField] GameObject player; //camera rig
+    [SerializeField] GameObject cameraRig; //camera rig
+    //[SerializeField] CameraRig cameraRig;
+    [SerializeField] Camera camera;
+    //[SerializeField] CameraRig cameraRig; 
+    Vector3 originCamera;
+    Vector3 originCameraRig;
+    //bool finish = false;
     bool smaller;
     Vector3 scale;
     Vector3 scaleSize = new Vector3(0.001f, 0.001f, 0.001f);
 
     private void OnTriggerEnter(Collider other)
     {
+        originCamera.x = camera.transform.position.x;
+        originCamera.z = camera.transform.position.z;
+        //originCamera.x = 0f;
+        //originCamera.z = 0f;
+
+        originCameraRig.x = cameraRig.transform.position.x;
+        originCameraRig.z = cameraRig.transform.position.z;
+
+        //cameraRig.transform.position += new Vector3(camera.transform.position.x, 0f, camera.transform.position.z);
+        //camera.transform.position = new Vector3(0f, camera.transform.position.y, 0f);
+        //Debug.Log("rig " + cameraRig.transform.position.ToString());
+        //Debug.Log("cam " + camera.transform.position.ToString());
+
         Debug.Log("drink");
         smaller = true;
     }
 
     private void Update()
     {
-        scale = player.transform.localScale;
-        if (smaller && player.transform.localScale.y > 0.1f)
+        scale = cameraRig.transform.localScale;
+        if (smaller && cameraRig.transform.localScale.y > 0.1f)
         {
-            Debug.Log("resize");
-            player.transform.localScale -= scaleSize;
+            //Debug.Log("resize");
+
+            //camera.transform.position = new Vector3(0f, camera.transform.position.y, 0f);
+            //Debug.Log("cam res " + camera.transform.position.ToString());
+            cameraRig.transform.localScale -= scaleSize;
+            //cameraRig.transform.position = new Vector3(
+            //    cameraRig.transform.position.x + (camera.transform.position.x - cameraRig.transform.position.x - (originCamera.x - originCameraRig.x) * 0.999f) * 0.001f,
+            //    0,
+            //    cameraRig.transform.position.z + (camera.transform.position.z - cameraRig.transform.position.z - (originCamera.z - originCameraRig.z) * 0.999f) * 0.001f
+            //    );
+
+            // Nicht bewegen:
+            cameraRig.transform.position = new Vector3(
+                cameraRig.transform.position.x + (originCamera.x - originCameraRig.x) * 0.001f,
+                0,
+                cameraRig.transform.position.z + (originCamera.z - originCameraRig.z) * 0.001f
+                );
+
+            //finish = true;
+            // 6cam+3rig=6cam*0,1+6rig+(3orig-0,6cam)
+            //9=0,6+8,4rig(6+2,4)
+            //9=0,6+8,4rig(3+5,4)
+            //cameraRig.transform.position = new Vector3(
+            //    cameraRig.transform.position.x + (originCameraRig.x+ (camera.transform.position.x-(camera.transform.position.x * 0.001f))) * 0.001f,
+            //    0,
+            //    cameraRig.transform.position.z + (originCameraRig.z+ (camera.transform.position.z-(camera.transform.position.z * 0.001f))) * 0.001f
+            //    );
         }
         else
         {
+            //if (finish)
+            //{
+            //    finish = false;
+            //    //cameraRig.transform.position = new Vector3((0.1f*originCamera.x), 0f, (0.1f*originCamera.z));
+            //}
             smaller = false;
         }
+
+        /* Feature: Fly Steuerung um Ursprung 
+         * [SerializeField] GameObject cameraRig; //camera rig
+    //[SerializeField] CameraRig cameraRig;
+    [SerializeField] Camera camera;
+    //[SerializeField] CameraRig cameraRig; 
+    Vector3 originCamera;
+    Vector3 originCameraRig;
+    //bool finish = false;
+    bool smaller;
+    Vector3 scale;
+    Vector3 scaleSize = new Vector3(0.001f, 0.001f, 0.001f);
+
+    private void OnTriggerEnter(Collider other)
+    {
+        originCamera.x = camera.transform.position.x;
+        originCamera.z = camera.transform.position.z;
+        //originCamera.x = 0f;
+        //originCamera.z = 0f;
+
+        originCameraRig.x = cameraRig.transform.position.x;
+        originCameraRig.z = cameraRig.transform.position.z;
+
+        //cameraRig.transform.position += new Vector3(camera.transform.position.x, 0f, camera.transform.position.z);
+        //camera.transform.position = new Vector3(0f, camera.transform.position.y, 0f);
+        //Debug.Log("rig " + cameraRig.transform.position.ToString());
+        //Debug.Log("cam " + camera.transform.position.ToString());
+
+        Debug.Log("drink");
+        smaller = true;
+    }
+
+    private void Update()
+    {
+        scale = cameraRig.transform.localScale;
+        if (smaller && cameraRig.transform.localScale.y > 0.1f)
+        {
+            //Debug.Log("resize");
+
+            //camera.transform.position = new Vector3(0f, camera.transform.position.y, 0f);
+            //Debug.Log("cam res " + camera.transform.position.ToString());
+            cameraRig.transform.localScale -= scaleSize;
+            cameraRig.transform.position = new Vector3(
+                cameraRig.transform.position.x + (originCamera.x - originCameraRig.x ) *0.001f + (camera.transform.position.x- cameraRig.transform.position.x) *0.999f,
+                0,
+                cameraRig.transform.position.z + (originCamera.z - originCameraRig.z ) *0.001f + (camera.transform.position.z-cameraRig.transform.position.z )*0.999f
+                );
+            //finish = true;
+        }
+        else
+        {
+            //if (finish)
+            //{
+            //    finish = false;
+            //    //cameraRig.transform.position = new Vector3((0.1f*originCamera.x), 0f, (0.1f*originCamera.z));
+            //}
+            smaller = false;
+        }*/
     }
 }
