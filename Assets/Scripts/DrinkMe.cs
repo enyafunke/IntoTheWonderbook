@@ -41,6 +41,7 @@ public class DrinkMe : MonoBehaviour
         {
             //Debug.Log("resize");
 
+            //Debug.Log("cam x "+cameraRig.transform.position.x*camera.transform.position.x+"\n"+"\t cam z "+cameraRig.transform.position.z*camera.transform.position.z);
             //camera.transform.position = new Vector3(0f, camera.transform.position.y, 0f);
             //Debug.Log("cam res " + camera.transform.position.ToString());
             cameraRig.transform.localScale -= scaleSize;
@@ -51,11 +52,11 @@ public class DrinkMe : MonoBehaviour
             //    );
 
             // Nicht bewegen:
-            cameraRig.transform.position = new Vector3(
-                cameraRig.transform.position.x + (originCamera.x - originCameraRig.x) * 0.001f,
-                0,
-                cameraRig.transform.position.z + (originCamera.z - originCameraRig.z) * 0.001f
-                );
+            // cameraRig.transform.position = new Vector3(
+            //     cameraRig.transform.position.x + (originCamera.x - originCameraRig.x) * 0.001f,
+            //     0,
+            //     cameraRig.transform.position.z + (originCamera.z - originCameraRig.z) * 0.001f
+            //     );
 
             //finish = true;
             // 6cam+3rig=6cam*0,1+6rig+(3orig-0,6cam)
@@ -66,6 +67,31 @@ public class DrinkMe : MonoBehaviour
             //    0,
             //    cameraRig.transform.position.z + (originCameraRig.z+ (camera.transform.position.z-(camera.transform.position.z * 0.001f))) * 0.001f
             //    );
+            // Camera ändert Werte nicht beim schrumpfen --> bewegungs änderung nächstes Mal hinzuaddieren?
+            // cameraRig.transform.position = new Vector3(
+            //     cameraRig.transform.position.x + (camera.transform.position.x) * (1f- cameraRig.transform.localScale.x),
+            //     0,
+            //     cameraRig.transform.position.z + (camera.transform.position.z) * (1f- cameraRig.transform.localScale.z)
+            //     );
+
+            // cameraRig um scale weiter schieben
+            // cameraRig.transform.position = new Vector3(
+            //     cameraRig.transform.position.x +  (camera.transform.position.x* (scaleSize.x))/(camera.transform.position.x),
+            //     0,
+            //     cameraRig.transform.position.z - camera.transform.position.z *2* (scaleSize.z)
+            //     );
+
+            // cameraRig.transform.position = new Vector3(
+            //     cameraRig.transform.position.x + (camera.transform.position.x - cameraRig.transform.position.x) * (2*scaleSize.x),
+            //     0,
+            //     cameraRig.transform.position.z + (camera.transform.position.z - cameraRig.transform.position.z) * (0.5f*scaleSize.z)
+            //     );
+            cameraRig.transform.position = new Vector3(
+                cameraRig.transform.position.x + (camera.transform.position.x - originCameraRig.x) * (scaleSize.x),
+                0,
+                cameraRig.transform.position.z + (camera.transform.position.z - originCameraRig.z) * (scaleSize.z)
+                );
+
         }
         else
         {
