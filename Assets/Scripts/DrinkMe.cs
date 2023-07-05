@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class DrinkMe : MonoBehaviour
 {
+    //Gemeinsame Variable für EatMe und DrinkMe, um zu verhindern, dass beide gleichzeitig aktiviert werden
+    [HideInInspector]  public static bool resizeIsActive = false;
+
+
     [SerializeField] GameObject cameraRig; //camera rig
     //[SerializeField] CameraRig cameraRig;
     [SerializeField] Camera camera;
@@ -14,6 +18,7 @@ public class DrinkMe : MonoBehaviour
     bool smaller;
     Vector3 scale;
     Vector3 scaleSize = new Vector3(0.001f, 0.001f, 0.001f);
+
 
     private void OnTriggerEnter(Collider other)
     {
@@ -37,8 +42,10 @@ public class DrinkMe : MonoBehaviour
     private void Update()
     {
         scale = cameraRig.transform.localScale;
-        if (smaller && cameraRig.transform.localScale.y > 0.1f)
+        if (!resizeIsActive && smaller && cameraRig.transform.localScale.y > 0.1f)
         {
+            resizeIsActive = true;
+            Debug.Log("Resize Smaller: " + resizeIsActive);
             //Debug.Log("resize");
 
             //Debug.Log("cam x "+cameraRig.transform.position.x*camera.transform.position.x+"\n"+"\t cam z "+cameraRig.transform.position.z*camera.transform.position.z);
@@ -92,6 +99,7 @@ public class DrinkMe : MonoBehaviour
                 cameraRig.transform.position.z + (camera.transform.position.z - originCameraRig.z) * (scaleSize.z)
                 );
 
+            
         }
         else
         {
@@ -101,6 +109,7 @@ public class DrinkMe : MonoBehaviour
             //    //cameraRig.transform.position = new Vector3((0.1f*originCamera.x), 0f, (0.1f*originCamera.z));
             //}
             smaller = false;
+            resizeIsActive = false;
         }
 
         /* Feature: Fly Steuerung um Ursprung 
