@@ -106,7 +106,7 @@ public class DrinkMe : MonoBehaviour
             //if (finish)
             //{
             //    finish = false;
-            //    //cameraRig.transform.position = new Vector3((0.1f*originCamera.x), 0f, (0.1f*originCamera.z));
+            //    //cameraRig.transform.position = new Vector3((0.1f*..x), 0f, (0.1f*originCamera.z));
             //}
             smaller = false;
             resizeIsActive = false;

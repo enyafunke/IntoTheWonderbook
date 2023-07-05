@@ -39,11 +39,13 @@ public class EatMe : MonoBehaviour
                 cameraRig.transform.localScale += scaleSize;
 
                 
+                
                 cameraRig.transform.position = new Vector3(
-                cameraRig.transform.position.x + (originCameraRig.x - camera.transform.position.x ) * (scaleSize.x),
+                cameraRig.transform.position.x - (camera.transform.position.x - originCameraRig.x) * (scaleSize.x),
                 0,
-                cameraRig.transform.position.z + (originCameraRig.z - camera.transform.position.z) * (scaleSize.z)
+                cameraRig.transform.position.z - (camera.transform.position.z - originCameraRig.z) * (scaleSize.z)
                 );
+                
 
                 
             }
