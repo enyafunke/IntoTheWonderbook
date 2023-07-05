@@ -12,6 +12,7 @@ TagManager:
   - Key
   - Drink
   - Eat
+  - Rabbit
   layers:
   - Default
   - TransparentFX
