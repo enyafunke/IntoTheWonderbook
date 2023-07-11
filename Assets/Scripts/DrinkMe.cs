@@ -6,6 +6,7 @@ public class DrinkMe : MonoBehaviour
 {
     //Gemeinsame Variable für EatMe und DrinkMe, um zu verhindern, dass beide gleichzeitig aktiviert werden
     [HideInInspector]  public static bool resizeIsActive = false;
+    [HideInInspector]  public static Vector3 originCameraRigPosition = new Vector3(0f,0f,0f);
 
 
     [SerializeField] GameObject cameraRig; //camera rig
@@ -29,6 +30,8 @@ public class DrinkMe : MonoBehaviour
 
         originCameraRig.x = cameraRig.transform.position.x;
         originCameraRig.z = cameraRig.transform.position.z;
+
+        originCameraRigPosition = cameraRig.transform.position;
 
         //cameraRig.transform.position += new Vector3(camera.transform.position.x, 0f, camera.transform.position.z);
         //camera.transform.position = new Vector3(0f, camera.transform.position.y, 0f);
