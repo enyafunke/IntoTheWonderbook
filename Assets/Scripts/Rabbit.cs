@@ -21,9 +21,9 @@ public class Rabbit : MonoBehaviour
 
     IEnumerator ToWonderland()
     {
-        //anim.SetTrigger("transition");
-        transitionPlane.SetActive(true);
-        startTransition = true;
+        anim.SetTrigger("transition");
+        //transitionPlane.SetActive(true);
+        //startTransition = true;
 
         yield return new WaitForSeconds(5);
 
@@ -35,7 +35,7 @@ public class Rabbit : MonoBehaviour
         StartCoroutine(ToWonderland());
     }
 
-    private void Update()
+    /*private void Update()
     {
         if(startTransition)
         {
@@ -47,5 +47,5 @@ public class Rabbit : MonoBehaviour
                 transitionPlane.GetComponent<Material>().color = color;
             }
         }
-    }
+    }*/
 }
