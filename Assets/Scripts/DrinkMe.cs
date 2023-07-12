@@ -20,6 +20,8 @@ public class DrinkMe : MonoBehaviour
     Vector3 scale;
     Vector3 scaleSize = new Vector3(0.001f, 0.001f, 0.001f);
 
+    //Spawn Objects
+    public GameObject objectToSpawn;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -40,12 +42,30 @@ public class DrinkMe : MonoBehaviour
 
         Debug.Log("drink");
         smaller = true;
+
+
+
+        //spawn Key (+ cookies?)
+        if(GameObject.FindGameObjectsWithTag("TestKey").Length == 0)
+        {
+            Debug.Log("FindGameObjects");
+            spawnKey();
+        }
+    }
+
+    void spawnKey()
+    {
+        {
+            Vector3 keySpawnPosition = new Vector3(-0.15f, 0.01f, -2.82f);
+            GameObject key = Instantiate(objectToSpawn, keySpawnPosition, Quaternion.identity);
+        }
     }
 
     private void Update()
     {
         scale = cameraRig.transform.localScale;
-        if (!resizeIsActive && smaller && cameraRig.transform.localScale.y > 0.1f)
+        //if (!resizeIsActive && smaller && cameraRig.transform.localScale.y > 0.1f)
+        if (smaller && cameraRig.transform.localScale.y > 0.1f)
         {
             resizeIsActive = true;
             Debug.Log("Resize Smaller: " + resizeIsActive);
