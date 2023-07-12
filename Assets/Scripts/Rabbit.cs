@@ -32,7 +32,7 @@ public class Rabbit : MonoBehaviour
 
     private void Start()
     {
-        StartCoroutine(ToWonderland());
+        //StartCoroutine(ToWonderland());
     }
 
     /*private void Update()
