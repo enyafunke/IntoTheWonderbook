@@ -4,15 +4,17 @@ using UnityEngine;
 
 public class Key : MonoBehaviour
 {
+    private void OnCollisionEnter(Collision collision)
+    {
+        Debug.Log("collide: " + collision.gameObject);
+        Debug.Log("collide tag: " + collision.gameObject.tag);
+        if (collision.gameObject.CompareTag("Door"))
+            OpenDoor();
+
+    }
 
     private void OpenDoor()
     {
         Debug.Log("open door");
-    }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.gameObject.CompareTag("Door"))
-            OpenDoor();
     }
 }
