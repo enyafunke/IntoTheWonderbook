@@ -51,11 +51,20 @@ public class DrinkMe : MonoBehaviour
             Debug.Log("FindGameObjects");
             spawnKey();
         }
+
+        //if(spawnCookies(GameObject.FindGameObjectsWithTag("EatMe").Length == 0){
+        //  spawnCookies();
+        //}
     }
 
     void spawnKey()
-    {   Vector3 keySpawnPosition = new Vector3(-0.15f, 0.0012f, -2.82f);
+    {   Vector3 keySpawnPosition = new Vector3(8, 0.2f, 25);
         GameObject key = Instantiate(objectToSpawn, keySpawnPosition, Quaternion.identity);
+    }
+
+    void spawnCookies()
+    {
+        Debug.Log("Cookies Spawned");
     }
 
     private void Update()
