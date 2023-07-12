@@ -12,6 +12,7 @@ TagManager:
   - Key
   - Drink
   - Eat
+  - TestKey
   layers:
   - Default
   - TransparentFX

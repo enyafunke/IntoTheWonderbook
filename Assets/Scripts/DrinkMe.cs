@@ -46,7 +46,7 @@ public class DrinkMe : MonoBehaviour
 
 
         //spawn Key (+ cookies?)
-        if(GameObject.FindGameObjectsWithTag("TestKey").Length == 0)
+        if(GameObject.FindGameObjectsWithTag("Key").Length == 0)
         {
             Debug.Log("FindGameObjects");
             spawnKey();
@@ -54,11 +54,8 @@ public class DrinkMe : MonoBehaviour
     }
 
     void spawnKey()
-    {
-        {
-            Vector3 keySpawnPosition = new Vector3(-0.15f, 0.01f, -2.82f);
-            GameObject key = Instantiate(objectToSpawn, keySpawnPosition, Quaternion.identity);
-        }
+    {   Vector3 keySpawnPosition = new Vector3(-0.15f, 0.0012f, -2.82f);
+        GameObject key = Instantiate(objectToSpawn, keySpawnPosition, Quaternion.identity);
     }
 
     private void Update()
