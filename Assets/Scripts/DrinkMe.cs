@@ -128,6 +128,8 @@ public class DrinkMe : MonoBehaviour
                 cameraRig.transform.position.z + (camera.transform.position.z - originCameraRig.z) * (scaleSize.z)
                 );
 
+            // Groundendpoint
+            Debug.Log(GetGroundIntersectionPoint(originCameraRigPosition, cameraRig.transform.position));
             
         }
         else
@@ -199,4 +201,19 @@ public class DrinkMe : MonoBehaviour
             smaller = false;
         }*/
     }
+
+    private Vector3 GetGroundIntersectionPoint(Vector3 originalPosition, Vector3 newPosition)
+    {
+        Ray ray = new Ray(originalPosition, newPosition - originalPosition);
+        RaycastHit hit;
+
+        if (Physics.Raycast(ray, out hit, Mathf.Infinity, LayerMask.GetMask("Ground")))
+        {
+            return hit.point;
+        }
+
+        // Wenn keine Schnittstelle gefunden wurde, gib die ursprüngliche Position zurück.
+        return originalPosition;
+    }
+
 }
