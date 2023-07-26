@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class DrinkMe : MonoBehaviour
 {
+    GameObject shrinkPillar;
+
+
+
     //Gemeinsame Variable für EatMe und DrinkMe, um zu verhindern, dass beide gleichzeitig aktiviert werden
     [HideInInspector]  public static bool resizeIsActive = false;
     [HideInInspector]  public static Vector3 originCameraRigPosition = new Vector3(0f,0f,0f);
@@ -22,6 +26,7 @@ public class DrinkMe : MonoBehaviour
 
     //Spawn Objects
     public GameObject objectToSpawn;
+    [SerializeField] GameObject pillarCylinder;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -44,9 +49,13 @@ public class DrinkMe : MonoBehaviour
         smaller = true;
 
 
+        Vector3 shrinkPoint = new Vector3(0, 0, 0);
+        shrinkPillar = Instantiate(pillarCylinder, shrinkPoint, Quaternion.identity);
+        //Debug.Log("Shrink Pillar: " + shrinkPillar.)
+
 
         //spawn Key (+ cookies?)
-        if(GameObject.FindGameObjectsWithTag("Key").Length == 0)
+        if (GameObject.FindGameObjectsWithTag("Key").Length == 0)
         {
             Debug.Log("FindGameObjects");
             spawnKey();
@@ -74,7 +83,7 @@ public class DrinkMe : MonoBehaviour
         if (smaller && cameraRig.transform.localScale.y > 0.1f)
         {
             resizeIsActive = true;
-            Debug.Log("Resize Smaller: " + resizeIsActive);
+            //Debug.Log("Resize Smaller: " + resizeIsActive);
             //Debug.Log("resize");
 
             //Debug.Log("cam x "+cameraRig.transform.position.x*camera.transform.position.x+"\n"+"\t cam z "+cameraRig.transform.position.z*camera.transform.position.z);
@@ -128,7 +137,29 @@ public class DrinkMe : MonoBehaviour
                 cameraRig.transform.position.z + (camera.transform.position.z - originCameraRig.z) * (scaleSize.z)
                 );
 
-            
+            Vector3 shrinkcenter = GetGroundIntersectionPoint(originCameraRigPosition, cameraRig.transform.position, pillarCylinder.transform.position);
+            //pillarCylinder.transform.position.x = (shrinkcenter.x + (camera.transform.position.x - originCameraRig.x) * (scaleSize.x));
+            //pillarCylinder.transform.position.z = (shrinkcenter.z + (camera.transform.position.z - originCameraRig.z) * (scaleSize.z));
+            //pillarCylinder.transform.position = new Vector3(
+
+            //shrinkcenter.x + (camera.transform.position.x - originCameraRig.x) * (scaleSize.x),
+            //0,
+            //(shrinkcenter.z + (camera.transform.position.z - originCameraRig.z) * (scaleSize.z))
+            //);
+
+            pillarCylinder.transform.position = new Vector3(
+
+            shrinkcenter.x + (camera.transform.position.x ) * (scaleSize.x),
+            0,
+            (shrinkcenter.z + (camera.transform.position.z ) * (scaleSize.z))
+            );
+
+            //Debug.Log(GetGroundIntersectionPoint(originCameraRigPosition, cameraRig.transform.position) + (camera.transform.position - originCameraRig) * (scaleSize));
+            Debug.Log(pillarCylinder.transform.position);
+
+            //shrinkPillar.transform.position = GetGroundIntersectionPoint(originCameraRigPosition, cameraRig.transform.position) + ((camera.transform.position - originCameraRig).multiply(scale));
+
+
         }
         else
         {
@@ -198,5 +229,24 @@ public class DrinkMe : MonoBehaviour
             //}
             smaller = false;
         }*/
+    }
+
+    private Vector3 GetGroundIntersectionPoint(Vector3 originalPosition, Vector3 newPosition, Vector3 elsePosition)
+    {
+        Ray ray = new Ray(originalPosition, newPosition - originalPosition);
+        RaycastHit hit;
+
+        int masklayer = 1 << 6;
+        //if (Physics.Raycast(ray, out hit, Mathf.Infinity, LayerMask.GetMask("Ground")))
+        //if (Physics.Raycast(ray, out hit, Mathf.Infinity, LayerMask.GetMask("ShrinkRay")))
+        //if (Physics.Raycast(ray, out hit, Mathf.Infinity, masklayer))
+        if (Physics.Raycast(ray, out hit, masklayer))
+        {
+            Debug.Log("hit");
+            return hit.point;
+        }
+
+        // Wenn keine Schnittstelle gefunden wurde, gib die ursprüngliche Position zurück.
+        return elsePosition;
     }
 }
