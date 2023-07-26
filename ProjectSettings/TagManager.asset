@@ -12,6 +12,7 @@ TagManager:
   - Key
   - Drink
   - Eat
+  - TestKey
   layers:
   - Default
   - TransparentFX
@@ -19,7 +20,7 @@ TagManager:
   - Collectibles
   - Water
   - UI
-  - 
+  - ShrinkRay
   - 
   - 
   - 
