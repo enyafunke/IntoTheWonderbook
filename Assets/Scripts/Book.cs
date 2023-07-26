@@ -36,6 +36,7 @@ public class Book : MonoBehaviour
                 other.gameObject.transform.parent = items.transform;
                 other.gameObject.transform.localPosition = new Vector3(0, 0, -0.1f);
                 other.gameObject.transform.eulerAngles = new Vector3(-70f, 0f, 180f);
+                GetComponent<AudioSource>().Play();
             }
         }
     }
