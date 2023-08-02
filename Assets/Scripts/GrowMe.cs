@@ -5,13 +5,14 @@ using UnityEngine;
 public class GrowMe : MonoBehaviour
 {
     // Grow CameraRig
-    public GameObject cameraRig; 
-    // public GameObject gameObject2; 
+    public GameObject cameraRig;
     public GameObject cameraRigParent;
+    public GameObject cameraRigParentDone;
     [SerializeField] Camera camera;
 
-    Vector3 scaleSize = new Vector3(0.01f, 0.01f, 0.01f);
+    Vector3 scaleSize = new Vector3(0.0042f, 0.0042f, 0.0042f);
     bool machmal = false;
+    [HideInInspector] public static bool isGrowing = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -20,15 +21,15 @@ public class GrowMe : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (cameraRigParent.transform.localScale.y < 0.9)
+        if (cameraRigParent.transform.localScale.y < 0.9 && !ShrinkMe.isShrinking)
         {
             machmal = true;
+            isGrowing = true;
         }
         cameraRigParent.transform.position = new Vector3(
             camera.transform.position.x,
             0, camera.transform.position.z);
         cameraRig.transform.parent = cameraRigParent.transform;
-        // gameObject2.transform.parent = cameraRigParent.transform;
     }
 
         // Update is called once per frame
@@ -40,7 +41,12 @@ public class GrowMe : MonoBehaviour
         }
         else
         {
-            machmal = false;
+            if (machmal)
+            {
+                cameraRig.transform.parent = cameraRigParentDone.transform;
+                machmal = false;
+                isGrowing = false;
+            }
         }
     }
 }
