@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,12 +9,14 @@ public class Book : MonoBehaviour
     [SerializeField] GameObject line;
     bool key, drink, eat;
     public GameObject rabbit;
+    [SerializeField] private AudioManager audio;
 
 
     private void OnTriggerEnter(Collider other)
     {
         if(other.gameObject.layer == 3)
         {
+            audio.PlayGegenstandSound(GetComponent<AudioSource>());
             if (other.gameObject.CompareTag("Key"))
             {
                 key = true;
@@ -36,7 +39,6 @@ public class Book : MonoBehaviour
                 other.gameObject.transform.parent = items.transform;
                 other.gameObject.transform.localPosition = new Vector3(0, 0, -0.1f);
                 other.gameObject.transform.eulerAngles = new Vector3(-70f, 0f, 180f);
-                GetComponent<AudioSource>().Play();
             }
         }
     }

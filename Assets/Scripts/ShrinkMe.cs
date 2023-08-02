@@ -47,6 +47,7 @@ public class ShrinkMe : MonoBehaviour
     // public GameObject gameObject2; 
     public GameObject cameraRigParent;
     [SerializeField] Camera camera;
+    [SerializeField] private AudioManager audio;
 
     Vector3 scaleSize = new Vector3(0.01f, 0.01f, 0.01f);
     bool machmal = false;
@@ -61,6 +62,7 @@ public class ShrinkMe : MonoBehaviour
         if (cameraRigParent.transform.localScale.y > 0.2)
         {
             machmal = true;
+            audio.PlayDrinkSound(cameraRig.GetComponent<AudioSource>());
         }
         cameraRigParent.transform.position = new Vector3(
             camera.transform.position.x,
