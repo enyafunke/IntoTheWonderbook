@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,6 +6,12 @@ using UnityEngine;
 public class Key : MonoBehaviour
 {
     [SerializeField] private AudioManager audio;
+
+    private void OnEnable()
+    {
+        audio.PlayGlitterSound(GetComponent<AudioSource>());
+    }
+
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.CompareTag("Door"))
