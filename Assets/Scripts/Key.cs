@@ -4,17 +4,17 @@ using UnityEngine;
 
 public class Key : MonoBehaviour
 {
+    [SerializeField] private AudioManager audio;
     private void OnCollisionEnter(Collision collision)
     {
-        Debug.Log("collide: " + collision.gameObject);
-        Debug.Log("collide tag: " + collision.gameObject.tag);
         if (collision.gameObject.CompareTag("Door"))
-            OpenDoor();
+            OpenDoor(collision.gameObject);
 
     }
 
-    private void OpenDoor()
+    private void OpenDoor(GameObject door)
     {
-        Debug.Log("open door");
+        audio.PlayDoorSound(door.GetComponent<AudioSource>());
+        door.GetComponent<Animator>().SetTrigger("open");
     }
 }
