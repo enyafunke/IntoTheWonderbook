@@ -21,18 +21,22 @@ public class GrowMe : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (cameraRigParent.transform.localScale.y < 0.9 && !ShrinkMe.isShrinking)
+        if (other.gameObject.CompareTag("Selector"))
         {
-            machmal = true;
-            isGrowing = true;
+            if (cameraRigParent.transform.localScale.y < 0.9 && !ShrinkMe.isShrinking)
+            {
+                machmal = true;
+                isGrowing = true;
+            }
+
+            cameraRigParent.transform.position = new Vector3(
+                camera.transform.position.x,
+                0, camera.transform.position.z);
+            cameraRig.transform.parent = cameraRigParent.transform;
         }
-        cameraRigParent.transform.position = new Vector3(
-            camera.transform.position.x,
-            0, camera.transform.position.z);
-        cameraRig.transform.parent = cameraRigParent.transform;
     }
 
-        // Update is called once per frame
+    // Update is called once per frame
         void Update()
     {
         if (machmal && cameraRigParent.transform.localScale.y < 1)
