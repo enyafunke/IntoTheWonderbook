@@ -1,50 +1,20 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PickUpItem : MonoBehaviour
+public class Key : MonoBehaviour
 {
-    [SerializeField] private GameObject Bottle_static;
-    [SerializeField] private GameObject Cookie_static;
-    [SerializeField] private GameObject Key_static;
-    [SerializeField] private GameObject Bottle_item;
-    [SerializeField] private GameObject Cookie_item;
-    [SerializeField] private GameObject Key_item;
-
-
-    void OnTriggerEnter(Collider other)
+    private void OnCollisionEnter(Collision collision)
     {
-        if (other.gameObject.CompareTag("Eat"))
-        {
-            Cookie_static.SetActive(false);
-            Cookie_item.SetActive(true);
-            Debug.Log("Eat me funktioniert");
-        }
-        
-        if (other.gameObject.CompareTag("Drink"))
-        {
-            Bottle_static.SetActive(false);
-            Bottle_item.SetActive(true);
-            Debug.Log("Drink me funktioniert");
-        }
-        
-        if (other.gameObject.CompareTag("Key"))
-        {
-            Key_static.SetActive(false);
-            Key_item.SetActive(true);
-        }
+        Debug.Log("collide: " + collision.gameObject);
+        Debug.Log("collide tag: " + collision.gameObject.tag);
+        if (collision.gameObject.CompareTag("Door"))
+            OpenDoor();
+
     }
 
-    // Start is called before the first frame update
-    void Start()
+    private void OpenDoor()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        Debug.Log("open door");
     }
 }

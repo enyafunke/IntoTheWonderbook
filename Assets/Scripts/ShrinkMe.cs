@@ -59,7 +59,6 @@ public class ShrinkMe : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("Test");
         if (cameraRigParent.transform.localScale.y > 0.2 && !GrowMe.isGrowing)
         {
             machmal = true;
