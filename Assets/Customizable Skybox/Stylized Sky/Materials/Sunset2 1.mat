@@ -1,0 +1,88 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 8
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Sunset2 1
+  m_Shader: {fileID: 106, guid: 0000000000000000f000000000000000, type: 0}
+  m_ValidKeywords:
+  - _SUNDISK_SIMPLE
+  m_InvalidKeywords:
+  - _MAPPING_LATITUDE_LONGITUDE_LAYOUT
+  m_LightmapFlags: 0
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _BackTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _DownTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _FrontTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _LeftTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _RightTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Tex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _UpTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Ints: []
+    m_Floats:
+    - _AtmosphereThickness: 2.44
+    - _Exposure: 0.39
+    - _HorizonLineContribution: 0.75
+    - _HorizonLineExponent: 6
+    - _ImageType: 0
+    - _Layout: 0
+    - _Mapping: 1
+    - _MirrorOnBack: 0
+    - _Rotation: 0
+    - _SkyGradientExponent: 1
+    - _SunDiscContribution: 1
+    - _SunDiscExponent: 250000
+    - _SunDiscMultiplier: 200
+    - _SunDisk: 1
+    - _SunHaloContribution: 0.5
+    - _SunHaloExponent: 50
+    - _SunSize: 0.049
+    - _SunSizeConvergence: 5.38
+    - _Title: 0
+    - __dirty: 0
+    m_Colors:
+    - _GroundColor: {r: 0.10588236, g: 0.26666668, b: 0.40784317, a: 1}
+    - _HorizonLineColor: {r: 1, g: 0.062068965, b: 0, a: 1}
+    - _SkyGradientBottom: {r: 0, g: 0.06745285, b: 0.103773594, a: 1}
+    - _SkyGradientTop: {r: 0, g: 0, b: 0, a: 1}
+    - _SkyTint: {r: 0, g: 0.8666667, b: 0.26622447, a: 1}
+    - _SunDiscColor: {r: 1, g: 0.56997967, b: 0.41176468, a: 1}
+    - _SunHaloColor: {r: 1, g: 0.16911763, b: 0.16911763, a: 1}
+    - _Tint: {r: 0.5, g: 0.5, b: 0.5, a: 0.5}
+  m_BuildTextureStacks: []
