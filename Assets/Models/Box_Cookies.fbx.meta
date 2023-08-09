@@ -3,7 +3,27 @@ guid: 76b49ea7d6536214d8dac298d9708fa7
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Cookie
+    second: {fileID: 2100000, guid: 6af2856a02cbdb848b93d264c5ddc6ef, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Inner
+    second: {fileID: 2100000, guid: 342294ea50e9e9a4784508cd2dd32bf0, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Lid
+    second: {fileID: 2100000, guid: f6e782ce5b652c64a94619ecb4b83270, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Paper
+    second: {fileID: 2100000, guid: 1120954af2040fb43a713a52a11f51f9, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
