@@ -24,10 +24,12 @@ public class Book : MonoBehaviour
             if (other.gameObject.CompareTag("Eat"))
             {
                 eat = true;
+                Debug.Log("EAT ME einsammeln");
             }
             if (other.gameObject.CompareTag("Drink"))
             {
                 drink = true;
+                Debug.Log("DRINK ME einsammeln");
             }
             if (other.gameObject.CompareTag("Rabbit"))
             {
