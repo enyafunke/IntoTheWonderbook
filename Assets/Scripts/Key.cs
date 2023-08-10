@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PickUpItem : MonoBehaviour
+/*public class PickUpItem : MonoBehaviour
 {
     [SerializeField] private GameObject Bottle_static;
     [SerializeField] private GameObject Cookie_static;
@@ -47,4 +47,4 @@ public class PickUpItem : MonoBehaviour
     {
         
     }
-}
+}*/
