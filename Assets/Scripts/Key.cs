@@ -6,8 +6,10 @@ using UnityEngine;
 public class Key : MonoBehaviour
 {
     Animator anim;
+    [SerializeField] AudioSource openDoorSound;
     Boolean bookInArea = false;
     Boolean keyPressed = false;
+
 
     void OnTriggerEnter(Collider other)
     {
@@ -22,7 +24,11 @@ public class Key : MonoBehaviour
             keyPressed = true;
             Debug.Log("Key selected!");
 
-            if (bookInArea) anim.SetTrigger("openDoor");
+            if (bookInArea)
+            {
+                anim.SetTrigger("openDoor");
+                openDoorSound.Play(0);
+            }
         }
 
     }
