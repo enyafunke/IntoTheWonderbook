@@ -13,7 +13,7 @@ public class Rabbit : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Hand"))
+        if (other.CompareTag("Selector"))
         {
             StartCoroutine(ToWonderland());
         }
