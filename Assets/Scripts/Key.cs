@@ -7,6 +7,7 @@ public class Key : MonoBehaviour
 {
     Animator anim;
     [SerializeField] AudioSource openDoorSound;
+    [SerializeField] GameObject fog;
     Boolean bookInArea = false;
     Boolean keyPressed = false;
 
@@ -28,6 +29,7 @@ public class Key : MonoBehaviour
             {
                 anim.SetTrigger("openDoor");
                 openDoorSound.Play(0);
+                fog.SetActive(true);
             }
         }
 
