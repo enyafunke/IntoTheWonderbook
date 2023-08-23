@@ -47,11 +47,13 @@ public class ShrinkMe : MonoBehaviour
     public GameObject cameraRigParent;
     public GameObject cameraRigParentDone;
     [SerializeField] Camera camera;
+    [SerializeField] private GameObject Cookie_static;
 
     Vector3 scaleSize = new Vector3(0.0042f, 0.0042f, 0.0042f);
     bool machmal = false;
     [HideInInspector] public static bool isShrinking= false;
     // Start is called before the first frame update
+    bool first_shrink = true;
     void Start()
     {
         
@@ -59,8 +61,19 @@ public class ShrinkMe : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+     
+
         if (other.gameObject.CompareTag("Selector"))
         {
+            if (first_shrink)
+            {
+                first_shrink = false;
+                Cookie_static.SetActive(true);
+                Cookie_static.transform.position = new Vector3(
+                    camera.transform.position.x, 0.0277722f, camera.transform.position.z
+                    );
+            }
+
             if (cameraRigParent.transform.localScale.y > 0.2 && !GrowMe.isGrowing)
             {
                 machmal = true;
