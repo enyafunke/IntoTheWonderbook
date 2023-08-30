@@ -7,13 +7,17 @@ public class TreeAnim : MonoBehaviour
 {
     Animator tree1;
     Animator tree2;
+    [SerializeField] GameObject DrinkMe;
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.CompareTag("Book"))
+        if (other.gameObject.CompareTag("Book"))
         {
-         tree1.SetTrigger("treeBends"); 
-         tree2.SetTrigger(("treeBends"));
+            if (DrinkMe.activeSelf)
+            {
+                tree1.SetTrigger("treeBends");
+                tree2.SetTrigger("treeBends");
+            }
         }
     }
 
