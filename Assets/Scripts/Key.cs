@@ -29,15 +29,17 @@ public class Key : MonoBehaviour
             keyPressed = true;
             Debug.Log("Key selected!");
 
-            if (bookInArea)
-            {
-                anim.SetTrigger("openDoor");
-                openDoorSound.Play(0);
-                fog.SetActive(true);
-                text.SetActive(true);
-                keySound.Play(0);
-            }
+
         }
+        if (bookInArea && keyPressed)
+        {
+            anim.SetTrigger("openDoor");
+            openDoorSound.Play(0);
+            fog.SetActive(true);
+            text.SetActive(true);
+            keySound.Play(0);
+        }
+        
 
     }
 
