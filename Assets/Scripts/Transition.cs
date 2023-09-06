@@ -23,9 +23,9 @@ public class Transition : MonoBehaviour
     {
         anim.SetTrigger("transition");
         
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(5);
         tutorial.SetActive(false);
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(0.1f);
         cameraRig.SetActive(false);
         mainWorld.SetActive(true);
         anim.SetTrigger("transitionBack");
