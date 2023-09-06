@@ -28,19 +28,19 @@ public class Key : MonoBehaviour
         {
             keyPressed = true;
             Debug.Log("Key selected!");
-
-
-        }
-        if (bookInArea && keyPressed)
-        {
-            anim.SetTrigger("openDoor");
-            openDoorSound.Play(0);
-            fog.SetActive(true);
-            text.SetActive(true);
-            keySound.Play(0);
+            Debug.Log("DoorValue " + bookInArea);
+            if (bookInArea)
+            {
+                Debug.Log("OPEN!");
+                //anim.SetTrigger("openDoor");      //Hier ist ein Fehler
+                openDoorSound.Play(0);
+                fog.SetActive(true);
+                text.SetActive(true);
+                keySound.Play(0);
+                Debug.Log("Reacheable?");
+            }
         }
         
-
     }
 
     void OnTriggerLeave(Collider other)
