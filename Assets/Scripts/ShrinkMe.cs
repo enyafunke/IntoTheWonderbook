@@ -50,7 +50,7 @@ public class ShrinkMe : MonoBehaviour
     [SerializeField] private GameObject Cookie_static;
 
     Vector3 scaleSize = new Vector3(0.0042f, 0.0042f, 0.0042f);
-    bool machmal = false;
+    bool isProcessing = false;
     [HideInInspector] public static bool isShrinking= false;
     // Start is called before the first frame update
     bool first_shrink = true;
@@ -65,18 +65,9 @@ public class ShrinkMe : MonoBehaviour
 
         if (other.gameObject.CompareTag("Selector"))
         {
-            if (first_shrink)
-            {
-                first_shrink = false;
-                Cookie_static.SetActive(true);
-                Cookie_static.transform.position = new Vector3(
-                    camera.transform.position.x, 0.0277722f, camera.transform.position.z
-                    );
-            }
-
             if (cameraRigParent.transform.localScale.y > 0.2 && !GrowMe.isGrowing)
             {
-                machmal = true;
+                isProcessing = true;
                 isShrinking = true;
             }
 
@@ -90,17 +81,26 @@ public class ShrinkMe : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (machmal && cameraRigParent.transform.localScale.y > 0.1)
+        if (isProcessing && cameraRigParent.transform.localScale.y > 0.1)
         {
             cameraRigParent.transform.localScale -= scaleSize;
         }
         else
         {
-            if (machmal)
+            if (isProcessing)
             {
                 cameraRig.transform.parent = cameraRigParentDone.transform;
-                machmal = false;
+                isProcessing = false;
                 isShrinking = false;
+                
+                if (first_shrink)
+                {
+                    first_shrink = false;
+                    Cookie_static.SetActive(true);
+                    Cookie_static.transform.position = new Vector3(
+                        camera.transform.position.x+42f*scaleSize.x, 0.0277722f, camera.transform.position.z-42f*scaleSize.z
+                    );
+                }
             }
         }
     }
