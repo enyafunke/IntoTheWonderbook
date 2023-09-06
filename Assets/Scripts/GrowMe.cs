@@ -11,7 +11,7 @@ public class GrowMe : MonoBehaviour
     [SerializeField] Camera camera;
 
     Vector3 scaleSize = new Vector3(0.0042f, 0.0042f, 0.0042f);
-    bool machmal = false;
+    bool isProcessing = false;
     [HideInInspector] public static bool isGrowing = false;
     // Start is called before the first frame update
     void Start()
@@ -25,7 +25,7 @@ public class GrowMe : MonoBehaviour
         {
             if (cameraRigParent.transform.localScale.y < 0.9 && !ShrinkMe.isShrinking)
             {
-                machmal = true;
+                isProcessing = true;
                 isGrowing = true;
             }
 
@@ -39,16 +39,16 @@ public class GrowMe : MonoBehaviour
     // Update is called once per frame
         void Update()
     {
-        if (machmal && cameraRigParent.transform.localScale.y < 1)
+        if (isProcessing && cameraRigParent.transform.localScale.y < 1)
         {
             cameraRigParent.transform.localScale += scaleSize;
         }
         else
         {
-            if (machmal)
+            if (isProcessing)
             {
                 cameraRig.transform.parent = cameraRigParentDone.transform;
-                machmal = false;
+                isProcessing = false;
                 isGrowing = false;
             }
         }
