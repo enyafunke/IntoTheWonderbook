@@ -9,9 +9,10 @@ public class GrowMe : MonoBehaviour
     public GameObject cameraRigParent;
     public GameObject cameraRigParentDone;
     [SerializeField] Camera camera;
+    [SerializeField] private AudioSource eatSound;
 
     Vector3 scaleSize = new Vector3(0.0042f, 0.0042f, 0.0042f);
-    bool machmal = false;
+    bool isProcessing = false;
     [HideInInspector] public static bool isGrowing = false;
     // Start is called before the first frame update
     void Start()
@@ -21,30 +22,35 @@ public class GrowMe : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (cameraRigParent.transform.localScale.y < 0.9 && !ShrinkMe.isShrinking)
+        if (other.gameObject.CompareTag("Selector"))
         {
-            machmal = true;
-            isGrowing = true;
+            if (cameraRigParent.transform.localScale.y < 0.9 && !ShrinkMe.isShrinking)
+            {
+                isProcessing = true;
+                isGrowing = true;
+            }
+
+            cameraRigParent.transform.position = new Vector3(
+                camera.transform.position.x,
+                0, camera.transform.position.z);
+            cameraRig.transform.parent = cameraRigParent.transform;
+            eatSound.Play(0);
         }
-        cameraRigParent.transform.position = new Vector3(
-            camera.transform.position.x,
-            0, camera.transform.position.z);
-        cameraRig.transform.parent = cameraRigParent.transform;
     }
 
-        // Update is called once per frame
+    // Update is called once per frame
         void Update()
     {
-        if (machmal && cameraRigParent.transform.localScale.y < 1)
+        if (isProcessing && cameraRigParent.transform.localScale.y < 1)
         {
             cameraRigParent.transform.localScale += scaleSize;
         }
         else
         {
-            if (machmal)
+            if (isProcessing)
             {
                 cameraRig.transform.parent = cameraRigParentDone.transform;
-                machmal = false;
+                isProcessing = false;
                 isGrowing = false;
             }
         }

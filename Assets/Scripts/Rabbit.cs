@@ -7,45 +7,19 @@ using Valve.VR;
 
 public class Rabbit : MonoBehaviour
 {
-    [SerializeField] Animator anim;
-    [SerializeField] GameObject transitionPlane;
-    bool startTransition;
+    [SerializeField] private Transition tran;
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Hand"))
+        if (other.CompareTag("Selector"))
         {
-            StartCoroutine(ToWonderland());
+            Debug.Log(("collided"));
+            tran.StartTransition();
         }
-    }
-
-    IEnumerator ToWonderland()
-    {
-        anim.SetTrigger("transition");
-        //transitionPlane.SetActive(true);
-        //startTransition = true;
-
-        yield return new WaitForSeconds(5);
-
-        SceneManager.LoadScene(1);
     }
 
     private void Start()
     {
-        //StartCoroutine(ToWonderland());
+        //tran.StartTransition();
     }
-
-    /*private void Update()
-    {
-        if(startTransition)
-        {
-            Color color = transitionPlane.GetComponent<Material>().color;
-
-            if (color.a < 255)
-            {
-                color.a++;
-                transitionPlane.GetComponent<Material>().color = color;
-            }
-        }
-    }*/
 }
