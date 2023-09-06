@@ -98,7 +98,7 @@ public class ShrinkMe : MonoBehaviour
                     first_shrink = false;
                     Cookie_static.SetActive(true);
                     Cookie_static.transform.position = new Vector3(
-                        camera.transform.position.x+0.42f*scaleSize.x, 0.0277722f, camera.transform.position.z-0.42f*scaleSize.z
+                        camera.transform.position.x+42f*scaleSize.x, 0.0277722f, camera.transform.position.z-42f*scaleSize.z
                     );
                 }
             }
