@@ -9,6 +9,7 @@ public class GrowMe : MonoBehaviour
     public GameObject cameraRigParent;
     public GameObject cameraRigParentDone;
     [SerializeField] Camera camera;
+    [SerializeField] private AudioSource eatSound;
 
     Vector3 scaleSize = new Vector3(0.0042f, 0.0042f, 0.0042f);
     bool isProcessing = false;
@@ -33,6 +34,7 @@ public class GrowMe : MonoBehaviour
                 camera.transform.position.x,
                 0, camera.transform.position.z);
             cameraRig.transform.parent = cameraRigParent.transform;
+            eatSound.Play(0);
         }
     }
 

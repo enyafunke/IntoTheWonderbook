@@ -9,6 +9,7 @@ public class Key : MonoBehaviour
     [SerializeField] AudioSource openDoorSound;
     [SerializeField] GameObject fog;
     [SerializeField] GameObject text;
+    [SerializeField] private AudioSource keySound;
 
     Boolean bookInArea = false;
     Boolean keyPressed = false;
@@ -34,6 +35,7 @@ public class Key : MonoBehaviour
                 openDoorSound.Play(0);
                 fog.SetActive(true);
                 text.SetActive(true);
+                keySound.Play(0);
             }
         }
 

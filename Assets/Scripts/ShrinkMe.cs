@@ -48,6 +48,7 @@ public class ShrinkMe : MonoBehaviour
     public GameObject cameraRigParentDone;
     [SerializeField] Camera camera;
     [SerializeField] private GameObject Cookie_static;
+    [SerializeField] private AudioSource drinkSound;
 
     Vector3 scaleSize = new Vector3(0.0042f, 0.0042f, 0.0042f);
     bool isProcessing = false;
@@ -75,6 +76,7 @@ public class ShrinkMe : MonoBehaviour
                 camera.transform.position.x,
                 0, camera.transform.position.z);
             cameraRig.transform.parent = cameraRigParent.transform;
+            drinkSound.Play(0);
         }
     }
 
