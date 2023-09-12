@@ -8,6 +8,7 @@ using Valve.VR;
 public class Rabbit : MonoBehaviour
 {
     [SerializeField] private Transition tran;
+    [SerializeField] private AudioSource rabbitSound;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -15,6 +16,7 @@ public class Rabbit : MonoBehaviour
         {
             Debug.Log(("collided"));
             tran.StartTransition();
+            rabbitSound.Play(0);
         }
     }
 
