@@ -21,23 +21,18 @@ public class Key : MonoBehaviour
         if (other.gameObject.CompareTag("Door"))
         {
             bookInArea = true;
-            Debug.Log("Book coming in");
             //anim.SetTrigger("openDoor");
         }
         if (other.gameObject.CompareTag("Selector"))
         {
             keyPressed = true;
-            Debug.Log("Key selected!");
-            Debug.Log("DoorValue " + bookInArea);
             if (bookInArea)
             {
-                Debug.Log("OPEN!");
-                //anim.SetTrigger("openDoor");      //Hier ist ein Fehler
+                anim.SetTrigger("openDoor");      
                 openDoorSound.Play(0);
                 fog.SetActive(true);
                 text.SetActive(true);
                 keySound.Play(0);
-                Debug.Log("Reacheable?");
             }
         }
         
