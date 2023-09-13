@@ -8,6 +8,8 @@ public class TreeAnim : MonoBehaviour
     Animator tree1;
     Animator tree2;
     [SerializeField] GameObject DrinkMe;
+    [SerializeField] AudioSource TreeSound;
+    private bool firstTime = true;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -15,8 +17,14 @@ public class TreeAnim : MonoBehaviour
         {
             if (DrinkMe.activeSelf)
             {
-                tree1.SetTrigger("treeBends");
-                tree2.SetTrigger("treeBends");
+                if (firstTime)
+                {
+                    firstTime = false;
+                    TreeSound.Play(0);
+                    tree1.SetTrigger("treeBends");
+                    tree2.SetTrigger("treeBends");
+                    // TreeSound.Stop();
+                }
             }
         }
     }

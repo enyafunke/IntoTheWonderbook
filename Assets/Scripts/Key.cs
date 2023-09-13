@@ -28,11 +28,14 @@ public class Key : MonoBehaviour
             keyPressed = true;
             if (bookInArea)
             {
-                anim.SetTrigger("openDoor");      
-                openDoorSound.Play(0);
-                fog.SetActive(true);
-                text.SetActive(true);
-                keySound.Play(0);
+                anim.SetTrigger("openDoor");
+                if (fog.activeSelf == false)
+                {
+                    openDoorSound.Play(0);
+                    fog.SetActive(true);
+                    text.SetActive(true);
+                    keySound.Play(0);
+                }
             }
         }
         

@@ -49,6 +49,7 @@ public class ShrinkMe : MonoBehaviour
     [SerializeField] Camera camera;
     [SerializeField] private GameObject Cookie_static;
     [SerializeField] private AudioSource drinkSound;
+    [SerializeField] private AudioClip notUsable;
 
     Vector3 scaleSize = new Vector3(0.0042f, 0.0042f, 0.0042f);
     bool isProcessing = false;
@@ -66,17 +67,23 @@ public class ShrinkMe : MonoBehaviour
 
         if (other.gameObject.CompareTag("Selector"))
         {
+            
+            if (!isProcessing && !GrowMe.isGrowing)
+            {
+                drinkSound.Play(0);
+            }
+            
             if (cameraRigParent.transform.localScale.y > 0.2 && !GrowMe.isGrowing)
             {
                 isProcessing = true;
                 isShrinking = true;
+                drinkSound.Play(0);
             }
 
             cameraRigParent.transform.position = new Vector3(
                 camera.transform.position.x,
                 0, camera.transform.position.z);
             cameraRig.transform.parent = cameraRigParent.transform;
-            drinkSound.Play(0);
         }
     }
 

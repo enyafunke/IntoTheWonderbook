@@ -24,17 +24,26 @@ public class GrowMe : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Selector"))
         {
+            if (!isProcessing && !ShrinkMe.isShrinking)
+            {
+                eatSound.Play(0);
+            }
+            
             if (cameraRigParent.transform.localScale.y < 0.9 && !ShrinkMe.isShrinking)
             {
                 isProcessing = true;
                 isGrowing = true;
             }
+            
+            //Musik outfaden
+            //Tutorial aufheb Sound, use Sound
+            //
 
             cameraRigParent.transform.position = new Vector3(
                 camera.transform.position.x,
                 0, camera.transform.position.z);
             cameraRig.transform.parent = cameraRigParent.transform;
-            eatSound.Play(0);
+            
         }
     }
 
