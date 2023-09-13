@@ -8,6 +8,8 @@ public class Line : MonoBehaviour
     [SerializeField]LineRenderer lineRenderer;
     [SerializeField] GameObject rabbit;
     [SerializeField] GameObject book;
+    [SerializeField] GameObject hand;
+    [SerializeField] private bool hands;
 
     // Update is called once per frame
     void Update()
@@ -15,9 +17,19 @@ public class Line : MonoBehaviour
         /*lineRenderer.SetPosition(0, book.transform.position);
         lineRenderer.SetPosition(1, rabbit.transform.position);
         */
-        lineRenderer.positionCount = 2;
-        Vector3[] pos = {book.transform.position, rabbit.transform.position};
-        lineRenderer.SetPositions(pos);
+        if (!hands)
+        {
+            lineRenderer.positionCount = 2;
+            Vector3[] pos = {book.transform.position, rabbit.transform.position};
+            lineRenderer.SetPositions(pos);
+        }
+        else
+        {
+            lineRenderer.positionCount = 2;
+            Vector3[] pos = {hand.transform.position, rabbit.transform.position};
+            lineRenderer.SetPositions(pos);
+        }
+        
         /*if (Vector3.Distance(book.transform.position, rabbit.transform.position) < 3)
         {
             if(!lineRenderer.gameObject.activeSelf)

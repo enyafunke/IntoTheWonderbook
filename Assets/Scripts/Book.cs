@@ -4,34 +4,14 @@ using UnityEngine;
 
 public class Book : MonoBehaviour
 {
-    [SerializeField] GameObject items;
     [SerializeField] GameObject line;
-    bool key, drink, eat;
+    [SerializeField] GameObject lineHand;
     public GameObject rabbit;
     public GameObject rabbit2;
 
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.layer == 3)
-        {
-            if (other.gameObject.CompareTag("Key"))
-            {
-                key = true;
-                other.gameObject.transform.parent = items.transform;
-                //other.gameObject.transform.localPosition = new Vector3(0.5f, 0.5f, 0.5f);
-
-            }
-            if (other.gameObject.CompareTag("Eat"))
-            {
-                eat = true;
-                Debug.Log("EAT ME einsammeln");
-            }
-            if (other.gameObject.CompareTag("Drink"))
-            {
-                drink = true;
-                Debug.Log("DRINK ME einsammeln");
-            }
             if (other.gameObject.CompareTag("Rabbit"))
             {
                 line.SetActive(false);
@@ -42,8 +22,9 @@ public class Book : MonoBehaviour
                 rabbit2.SetActive(true);
                 rabbit.SetActive(false);
                 other.GetComponent<AudioSource>().Play();
+                lineHand.SetActive(true);
             }
-        }
+        
     }
 
     /*private void Start()
