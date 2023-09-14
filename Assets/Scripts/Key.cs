@@ -9,6 +9,8 @@ public class Key : MonoBehaviour
     [SerializeField] AudioSource openDoorSound;
     [SerializeField] GameObject fog;
     [SerializeField] GameObject text;
+    [SerializeField] GameObject grinseKatzeOnTree;
+    [SerializeField] GameObject grinseKatzeBehindDoor;
     [SerializeField] private AudioSource keySound;
 
     Boolean bookInArea = false;
@@ -34,11 +36,26 @@ public class Key : MonoBehaviour
                     openDoorSound.Play(0);
                     fog.SetActive(true);
                     text.SetActive(true);
+
+                    StartCoroutine(Cat());
+                    
+                        
+                    
                     keySound.Play(0);
                 }
             }
         }
         
+    }
+
+    IEnumerator Cat()
+    {
+        yield return new WaitForSeconds(3f);
+        grinseKatzeOnTree.SetActive(false);
+        grinseKatzeBehindDoor.SetActive(true);
+        yield return new WaitForSeconds(0.2f);
+        grinseKatzeOnTree.SetActive(true);
+        grinseKatzeBehindDoor.SetActive(false);
     }
 
     void OnTriggerLeave(Collider other)
