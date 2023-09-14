@@ -68,22 +68,24 @@ public class ShrinkMe : MonoBehaviour
         if (other.gameObject.CompareTag("Selector"))
         {
             
-            if (!isProcessing && !GrowMe.isGrowing)
+            /*if (!isProcessing && !GrowMe.isGrowing)
             {
                 drinkSound.Play(0);
             }
-            
-            if (cameraRigParent.transform.localScale.y > 0.2 && !GrowMe.isGrowing)
+            */
+
+            if (cameraRigParent.transform.localScale.y > 0.2 && !GrowMe.isGrowing && !isProcessing)
             {
                 isProcessing = true;
                 isShrinking = true;
                 drinkSound.Play(0);
-            }
 
-            cameraRigParent.transform.position = new Vector3(
-                camera.transform.position.x,
-                0, camera.transform.position.z);
-            cameraRig.transform.parent = cameraRigParent.transform;
+
+                cameraRigParent.transform.position = new Vector3(
+                    camera.transform.position.x,
+                    0, camera.transform.position.z);
+                cameraRig.transform.parent = cameraRigParent.transform;
+            }
         }
     }
 
